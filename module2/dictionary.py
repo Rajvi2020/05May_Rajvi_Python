@@ -36,4 +36,66 @@ if 'name' in stdata:
 else:
   print("no") #nmae as only key 
 
+if 'sanket' in stdata:
+  print("yes")
+else:
+  print("no")
 
+for i in stdata:
+  print(i) 
+
+
+for i in stdata.values():
+  print(i)
+
+for i ,j  in stdata.items():
+  print(i,j)
+
+
+for i,j in stdata.items():
+  print(f"key:{i} and values:{j}")
+
+stdata["id"]=102
+print(stdata)#update a value
+
+stdata["sub"]="python" #add a key 
+print(stdata)
+
+stdata.pop("sub")
+print(stdata)
+
+#del stdata
+#print(stdata) #this will give error after del because no stdata exist now.
+
+#del stdata["id"]
+#print(stdata)
+
+#loop through a dictionary
+for x in stdata:
+  print(x)
+
+for x in stdata.values():
+  print(x)
+
+newsdata=stdata.copy()
+print(newsdata)
+
+#nested dictionary
+stdata={
+  'id':[1,2,3,4,5],
+  'name':["l","g","e","h","q"],
+  'city':['t','q','f','b'],
+}
+print(stdata["city"][3])
+
+stdata=[
+  {'id':101,'name':'rajvi','city':'rajkot'},
+  {'id':101,'name':'rajvi','city':'rajkot'},
+  {'id':101,'name':'rajvi','city':'rajkot'},
+  {'id':101,'name':'rajvi','city':'rajkot'}
+  
+]
+print(stdata[0])
+
+for i in stdata:
+  print(i)
