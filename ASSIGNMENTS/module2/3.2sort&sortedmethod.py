@@ -1,6 +1,5 @@
 # Original list
 numbers = [5, 2, 9, 1, 7]
-# Using sort() method
 numbers.sort()
 print("List after sort():", numbers)
 numbers2 = [8, 3, 6, 4, 1]

@@ -1,4 +1,3 @@
-# Creating a list
 my_list = [10, "Python", 3.14, "AI", 50, "Data"]
 print("Original list:", my_list)
 # Using remove() - removes element by value
