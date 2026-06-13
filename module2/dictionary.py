@@ -7,10 +7,10 @@ stdata={
   'name':['sanket','rajvi','kishan','dharmendra'],
   'city':['rajkot','mahuva','bhavanagar','ahmendabad','gondal']
 }
-# print(stdata['id'])
-# print(stdata['id'][0])
-# for i,j in stdata.items():
-#   print(i,j[0])
+print(stdata['id'])
+print(stdata['id'][0])
+for i,j in stdata.items():
+  print(i,j[0])
 
 #another approach for nested dictionary
 # stdata=[
@@ -41,8 +41,15 @@ if 'sanket' in stdata:
 else:
   print("no")
 
-for i in stdata:
-  print(i) 
+'''if 'name' in stdata:
+'name' key dictionary માં છે કે નહીં તે ચેક કરે છે.
+જો key હોય તો "yes" print થશે.
+ન હોય તો "no" print થશે.
+if 'sanket' in stdata:
+'sanket' ને key તરીકે શોધે છે.
+Value તરીકે નથી શોધતું.
+જો 'sanket' key ન હોય તો "no" print થશે.'''
+ 
 
 
 for i in stdata.values():
