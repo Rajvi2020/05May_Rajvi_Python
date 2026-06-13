@@ -1,0 +1,8 @@
+f = open("my_fav_songs.txt", "w")
+f.write("Shape of You\n")
+f.write("Perfect\n")
+f.write("Believer\n")
+f.write("Senorita\n")
+f.write("Levitating\n")
+f.close()
+print("Songs saved successfully!")
