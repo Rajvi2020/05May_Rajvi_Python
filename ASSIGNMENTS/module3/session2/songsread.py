@@ -1,0 +1,7 @@
+file = open("playlist.txt", "r")
+file.seek(0)
+file.readline()
+file.readline()
+third_song = file.readline()
+print("Third Song:", third_song.strip())
+file.close()

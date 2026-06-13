@@ -1,0 +1,6 @@
+file = open("lyrics.txt", "r")
+print("Before reading:", file.tell())
+data = file.read(10)
+print("Read data:", data)
+print("After reading:", file.tell())
+file.close()

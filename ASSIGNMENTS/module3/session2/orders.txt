@@ -1,0 +1,5 @@
+Order 1: Pizza - Delivered
+Order 2: Burger - Delivered
+Order 3: Biryani - Cancelled
+Order 4: Pasta - Delivered
+Order 5: Sandwich - Delivered

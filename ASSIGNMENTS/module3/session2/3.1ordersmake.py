@@ -1,0 +1,7 @@
+file = open("orders.txt", "w")
+file.write("Order 1: Pizza - Delivered\n")
+file.write("Order 2: Burger - Delivered\n")
+file.write("Order 3: Biryani - Cancelled\n")
+file.write("Order 4: Pasta - Delivered\n")
+file.write("Order 5: Sandwich - Delivered\n")
+file.close()
