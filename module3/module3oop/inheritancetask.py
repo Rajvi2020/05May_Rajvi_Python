@@ -31,9 +31,9 @@ class statements(withdrawal):
 
 st=statements()
 st.getdata()
-st.getacinfo()
+
 st.getdeposit()
 st.getwithdraw()
-
+st.getacinfo()
 
          
