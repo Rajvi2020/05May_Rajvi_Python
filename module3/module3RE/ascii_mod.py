@@ -1,3 +1,15 @@
+'''ASCII Characters એટલે basic English characters.
+
+આમાં સામાન્ય રીતે આવે:
+
+A-Z   (Capital letters)
+a-z   (Small letters)
+0-9   (Digits)
+! @ # $ % ^ & * (Symbols)
+Space
+
+re.ASCII (or re.A) makes special sequences like \w, \W, \b, \B, \d, and \s match only ASCII characters instead of full Unicode characters.
+'''
 import re   # Regular Expression module import kare chhe
 
 mystr = "That is Python!1235659"   # String
@@ -84,3 +96,5 @@ Output:
 x = re.findall('59\Z', mystr)
 
 print(x)   # Match male to list print kare
+
+''''''

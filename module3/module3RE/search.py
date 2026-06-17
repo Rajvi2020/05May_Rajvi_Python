@@ -11,4 +11,10 @@ else:
     print("Error!")
 
 
+'''Return Type:
 
+Match Object
+
+જો match ન મળે:
+
+None'''

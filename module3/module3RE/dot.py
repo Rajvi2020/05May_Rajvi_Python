@@ -62,3 +62,4 @@ Output:
 કારણ કે બંને words હાજર છે.'''
 x=re.findall('this|that',mystr)
 print(x)
+'''in Regular Expression, dot (.) is a metacharacter that matches any single character except a newline character. For example, the pattern py..on can match python, py12on, or pyABon because the two dots represent any two characters."'''

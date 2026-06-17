@@ -10,5 +10,7 @@ if x:
 else:
     print("Error!")
 
+'''Return Type:
 
+list'''
 
