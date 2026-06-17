@@ -27,11 +27,6 @@ class VerifiedInfluencer(Influencer):
         print("Followers:", self.format_followers())
         print("Badge Status:", self.badge)
 
-v = VerifiedInfluencer(
-    "rajvi123",
-    "rajvi@gmail.com",
-    1500,
-    "Blue Tick"
-)
+v = VerifiedInfluencer("rajvi123","rajvi@gmail.com",1500,"Blue Tick")
 
 v.display_profile()
