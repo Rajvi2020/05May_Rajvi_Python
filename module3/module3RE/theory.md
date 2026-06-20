@@ -122,3 +122,7 @@ r'\b'
 ```
 
 આ safest અને recommended રીત છે. 👍
+
+
+pyeuite similar to tkinter
+
