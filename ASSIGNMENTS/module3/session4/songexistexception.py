@@ -13,3 +13,4 @@ def add_song_to_playlist(song_name, playlist):
 playlist = ["Believer", "Faded"]
 add_song_to_playlist("Perfect", playlist)
 add_song_to_playlist("Believer", playlist)
+

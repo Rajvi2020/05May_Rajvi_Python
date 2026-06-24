@@ -5,3 +5,4 @@ while line:
     print("Pointer position:", file.tell())
     line = file.readline()
 file.close()
+

@@ -21,7 +21,7 @@ num="123458555"
 # print(mystr.replace("pytHon","java"))
 #print(mystr.replace("H","h"))
 
-# print(mystr.split())
+#print(mystr.split())
 
 
 # age=29

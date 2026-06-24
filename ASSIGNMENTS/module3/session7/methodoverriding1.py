@@ -1,17 +1,13 @@
-class InstaStory:
-    def share(self):
-        print("Sharing an image story")
+class Payment:
+    def pay(self, amount):
+        print("Paying", amount)
 
+class UPI(Payment):
+    def pay(self, amount):
+        print("Paying", amount, "via UPI")
 
-class WhatsAppStory(InstaStory):
-    def share(self):   # Method Overriding
-        print("Sharing a text status")
+p = Payment()
+u = UPI()
 
-
-
-insta = InstaStory()
-whatsapp = WhatsAppStory()
-
-
-insta.share()
-whatsapp.share()
+p.pay(20000)
+u.pay(20000)

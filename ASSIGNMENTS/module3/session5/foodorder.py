@@ -16,7 +16,6 @@ class FoodOrder:
 
 order1 = FoodOrder(
     "Domino's Pizza",
-    ["Margherita Pizza", "Garlic Bread", "Coke"],
-    599
+    ["Margherita Pizza", "Garlic Bread", "Coke"],599
 )
 order1.show_order()

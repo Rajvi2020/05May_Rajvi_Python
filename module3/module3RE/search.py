@@ -1,7 +1,5 @@
 import re
-
 mystr="This is Python!"
-
 x=re.search("Python",mystr)
 print(x)
 

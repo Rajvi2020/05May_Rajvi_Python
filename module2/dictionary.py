@@ -1,4 +1,4 @@
-#stdata={'id':101,'name':"rajvi",'city':'rajkot'}
+3#stdata={'id':101,'name':"rajvi",'city':'rajkot'}
 #stdata={'id':102,'name':"rajvi",'city':'rajkot'}
 #print(stdata)#ama 102  vali override thase
 
@@ -30,7 +30,6 @@ stdata={'id':101,'name':"rajvi",'city':'rajkot'}
 # print(stdata.keys())
 # print(stdata.values())
 # print(len(stdata))
-
 if 'name' in stdata:
   print("yes")
 else:

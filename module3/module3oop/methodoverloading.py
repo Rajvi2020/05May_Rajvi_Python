@@ -10,4 +10,4 @@ st=Studinfo()
 st.getdata(101)
 st.getdata("Sanket")
 
-#in python method overloading is not possible,here it overrides the last method and considers only one.
+#in python method overloading is not possible,here it overrides the last method and considers only  last one.

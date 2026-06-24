@@ -1,4 +1,4 @@
-from insta import likes
+8from insta import likes
 from insta import comments
 current_likes = 120
 current_comments = 35
