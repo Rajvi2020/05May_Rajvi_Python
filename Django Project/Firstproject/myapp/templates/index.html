@@ -1,12 +1,41 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-  <h1>welcome to django</h1>
-   
+
+    <div class="container">
+        <h1>Welcome to Login Page</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <input type="text" name="name" placeholder="Enter Your Name" required>
+
+            <input type="email" name="email" placeholder="Enter Your Email" required>
+
+            <label for="city">Select City</label>
+
+            <select name="city" required>
+                <option value="">-- Select City --</option>
+                <option value="Rajkot">Rajkot</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Surat">Surat</option>
+                <option value="Vadodara">Vadodara</option>
+                <option value="Jamnagar">Jamnagar</option>
+                <option value="Bhavnagar">Bhavnagar</option>
+            </select>
+
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+
 </body>
 </html>
