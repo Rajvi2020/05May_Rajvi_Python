@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Form</title>
+</head>
+<body>
+
+<h1>Add Restaurant</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+    
+    {{ restaurant.as_p }}
+
+    <input type="submit" value="Save">
+
+</form>
+
+</body>
+</html>
