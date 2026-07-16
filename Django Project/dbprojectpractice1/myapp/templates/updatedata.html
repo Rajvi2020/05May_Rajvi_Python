@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<div class="min-h-screen flex items-center justify-center py-10">
+    <div class="bg-white shadow-lg rounded-xl w-full max-w-2xl p-8">
+
+        <h2 class="text-3xl font-bold text-center text-blue-600 mb-6">
+            Student Registration
+        </h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                <!-- First Name -->
+                <div>
+                    <label class="block mb-2 font-medium">First Name</label>
+                    <input type="text" name="first_name"
+                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        placeholder="Enter First Name" value="{{stid.first_name}}">
+                </div>
+
+                <!-- Last Name -->
+                <div>
+                    <label class="block mb-2 font-medium">Last Name</label>
+                    <input type="text" name="last_name"
+                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        placeholder="Enter Last Name" value="{{stid.last_name}}">
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block mb-2 font-medium">Email</label>
+                    <input type="email" name="email"
+                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        placeholder="Enter Email" value="{{stid.email}}">
+                </div>
+
+                <!-- Mobile -->
+                <div>
+                    <label class="block mb-2 font-medium">Mobile Number</label>
+                    <input type="text" name="mobile"
+                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        placeholder="Enter Mobile Number"  value="{{stid.mobile}}">
+                </div>
+
+                <!-- Gender -->
+                <div>
+                    <label class="block mb-2 font-medium">Gender</label>
+                    <select name="gender"
+                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <option >Select Gender</option>
+                        <option value="Male" {% if stid.gender == 'Male' %}selected{% endif %}>Male</option>
+                        <option  value="Female"
+        {% if stid.gender == "Female" %}selected{% endif %}>Female</option>
+                        <option value="Other"
+        {% if stid.gender == "Other" %}selected{% endif %}>Other</option>
+                    </select>
+                </div>
+
+                <!-- DOB -->
+                <div>
+                    <label class="block mb-2 font-medium">Date of Birth</label>
+                    <input type="date" name="dob" value="{{stid.dob | date:'Y-m-d'}}"
+                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+
+                <!-- Course -->
+                <div>
+                    <label class="block mb-2 font-medium">Course</label>
+                    <input type="text" name="course"
+                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        placeholder="Enter Course" value="{{stid.course}}">
+                </div>
+
+                <!-- City -->
+                <div>
+                    <label class="block mb-2 font-medium">City</label>
+                    <input type="text" name="city" value="{{stid.city}}"
+                        class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        placeholder="Enter City">
+                </div>
+
+            </div>
+
+            <!-- Address -->
+            <div class="mt-5">
+                <label class="block mb-2 font-medium">Address</label>
+                <textarea name="address" rows="3"
+                    class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    placeholder="Enter Address" >{{stid.address}}</textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-6 text-center">
+                <button type="submit"
+                    class="bg-blue-600 text-white px-8 py-2 rounded-lg hover:bg-blue-700 transition">
+                    Register
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+</a>
+</body>
+</html>

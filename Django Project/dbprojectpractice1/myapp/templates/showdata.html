@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+<div class="container mx-auto mt-10">
+
+    <h1 class="text-3xl font-bold text-center text-blue-600 mb-8">
+        Student Records
+    </h1>
+
+    <div class="overflow-x-auto">
+        <table class="w-full border border-gray-300 bg-white shadow-lg rounded-lg">
+
+            <thead class="bg-blue-600 text-white">
+                <tr>
+                    <th class="border p-3">ID</th>
+                    <th class="border p-3">First Name</th>
+                    <th class="border p-3">Last Name</th>
+                    <th class="border p-3">Email</th>
+                    <th class="border p-3">Mobile</th>
+                    <th class="border p-3">Gender</th>
+                    <th class="border p-3">DOB</th>
+                    <th class="border p-3">Course</th>
+                    <th class="border p-3">City</th>
+                    <th class="border p-3">Address</th>
+                    <th class="border p-3">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for i in students %}
+
+                <tr class="text-center hover:bg-gray-100">
+
+                    <td class="border p-2">{{ i.id }}</td>
+                    <td class="border p-2">{{ i.first_name }}</td>
+                    <td class="border p-2">{{ i.last_name }}</td>
+                    <td class="border p-2">{{ i.email }}</td>
+                    <td class="border p-2">{{ i.mobile }}</td>
+                    <td class="border p-2">{{ i.gender }}</td>
+                    <td class="border p-2">{{ i.dob }}</td>
+                    <td class="border p-2">{{ i.course }}</td>
+                    <td class="border p-2">{{ i.city }}</td>
+                    <td class="border p-2">{{ i.address }}</td>
+                 <td class="border p-2">
+    <a href="/updatedata/{{i.id}}" class="text-blue-600 hover:text-blue-800 underline">
+        Update
+    </a>
+
+    <a href="/deletedata/{{i.id}}" class="text-red-600 hover:text-red-800 underline ml-3">
+        Delete
+    </a>
+</td>
+                </tr>
+
+            {% empty %}
+
+                <tr>
+                    <td colspan="10" class="text-center p-5 text-red-600">
+                        No Data Found
+                    </td>
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
