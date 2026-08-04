@@ -127,7 +127,7 @@ EMAIL_PORT = 587
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = "rajvigandhi05@gmail.com"
+EMAIL_HOST_USER = ""
 
-EMAIL_HOST_PASSWORD = "iuvp viuk fucr sadd"
+EMAIL_HOST_PASSWORD = ""
 
