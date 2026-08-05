@@ -1,0 +1,82 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color:#f5f5f5; padding:20px;">
+
+    <div style="background:white; padding:20px; border-radius:10px;">
+
+        <h1 style="color:#fc8019;">
+            🍔 Swiggy Order Confirmed
+        </h1>
+
+        <p>Hello Customer,</p>
+
+        <p>Your delicious food is being prepared.</p>
+
+        <h3>Order Details</h3>
+
+        <ul>
+            <li>Veg Burger</li>
+            <li>French Fries</li>
+            <li>Cold Drink</li>
+        </ul>
+
+        <h2>Total: ₹350</h2>
+
+        <p>Estimated Delivery: 30 Minutes</p>
+
+        <hr>
+
+        <p>Thank you for ordering with Swiggy ❤️</p>
+
+    </div>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; background:#f5f5f5; padding:20px;">
+
+<div style="background:white; padding:20px; border-radius:10px;">
+
+<h1 style="color:#fc8019;">🍔 Swiggy Order Confirmed</h1>
+
+<h2>Hello {{ name }}</h2>
+
+<p>Your delicious food is being prepared.</p>
+
+<h3>Order Details</h3>
+
+<table border="1" cellpadding="10" cellspacing="0">
+
+<tr>
+    <th>Item</th>
+    <th>Quantity</th>
+</tr>
+
+{% for item in items %}
+
+<tr>
+    <td>{{ item.name }}</td>
+    <td>{{ item.qty }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<h2>Total ₹{{ total }}</h2>
+
+<p>Thank you for ordering with Swiggy ❤️</p>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Project</title>
+</head>
+<body>
+
+    <h1>Django Email Project</h1>
+
+    <a href="{% url 'test_email' %}">
+        <button>Test Email</button>
+    </a>
+
+    <br><br>
+
+    <a href="{% url 'order_email' %}">
+        <button>Order Email</button>
+    </a>
+<a href="{% url 'reset_email' %}">
+    <button>Password Reset Email</button>
+</a>
+<a href="{% url 'welcome_email' %}">
+    <button>Welcome Email</button>
+</a>
+</body>
+</html>
