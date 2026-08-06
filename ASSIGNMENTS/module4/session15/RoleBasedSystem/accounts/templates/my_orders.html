@@ -1,0 +1,19 @@
+<h1>My Orders</h1>
+
+{% for order in orders %}
+
+<p>
+Product : {{ order.product_name }}
+</p>
+
+<p>
+Price : ₹{{ order.price }}
+</p>
+
+<hr>
+
+{% empty %}
+
+<p>No Orders Found</p>
+
+{% endfor %}
