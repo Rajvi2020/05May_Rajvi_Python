@@ -1,0 +1,62 @@
+{% extends 'profiles/base.html' %}
+
+
+{% block content %}
+
+<h1>Social Profiles</h1>
+
+<a class="btn" href="{% url 'profile_create' %}">
+    + Create Profile
+</a>
+
+<a class="btn" href="{% url 'export_profiles' %}">
+    Export CSV
+</a>
+
+
+{% for profile in profiles %}
+
+<div class="profile">
+
+    <h2>{{ profile.name }}</h2>
+
+    <p>
+        <strong>Email:</strong>
+        {{ profile.email }}
+    </p>
+
+    <p>
+        <strong>Age:</strong>
+        {{ profile.age }}
+    </p>
+
+    <p>
+        <strong>City:</strong>
+        {{ profile.city }}
+    </p>
+
+    <p>
+        <strong>Bio:</strong>
+        {{ profile.bio }}
+    </p>
+
+    <p>
+        <strong>Public:</strong>
+
+        {% if profile.is_public %}
+            Yes
+        {% else %}
+            No
+        {% endif %}
+
+    </p>
+
+</div>
+
+{% empty %}
+
+<p>No profiles found.</p>
+
+{% endfor %}
+
+{% endblock %}

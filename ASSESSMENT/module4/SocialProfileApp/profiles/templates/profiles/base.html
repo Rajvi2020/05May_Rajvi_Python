@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Social Profile App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background: #222;
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button,
+        .btn {
+            background: #222;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .profile {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+
+    <a href="{% url 'profile_list' %}">
+        Home
+    </a>
+
+    <a href="{% url 'profile_create' %}">
+        Create Profile
+    </a>
+
+    <a href="{% url 'export_profiles' %}">
+        Export CSV
+    </a>
+
+</nav>
+
+<div class="container">
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+</body>
+</html>
