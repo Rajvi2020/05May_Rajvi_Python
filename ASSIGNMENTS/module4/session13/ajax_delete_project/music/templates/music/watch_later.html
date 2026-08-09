@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Watch Later</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f0f0f,
+                    #1f1f1f
+                );
+
+            color: white;
+
+            min-height: 100vh;
+
+            padding: 40px 20px;
+        }
+
+
+        .container {
+            max-width: 900px;
+
+            margin: auto;
+        }
+
+
+        /* Header */
+
+        .header {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .movie-icon {
+            width: 60px;
+            height: 60px;
+
+            background: #e50914;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 28px;
+        }
+
+
+        .header h1 {
+            font-size: 30px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .header p {
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+
+        /* Success Message */
+
+        #message {
+            display: none;
+
+            background: #198754;
+
+            padding: 13px 18px;
+
+            border-radius: 8px;
+
+            margin-bottom: 20px;
+
+            font-weight: bold;
+
+            text-align: center;
+        }
+
+
+        /* Movie List */
+
+        .movie-list {
+            background: #181818;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.4);
+        }
+
+
+        /* Movie Card */
+
+        .movie {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 20px;
+
+            border-bottom: 1px solid #333;
+
+            transition: 0.3s;
+        }
+
+
+        .movie:last-child {
+            border-bottom: none;
+        }
+
+
+        .movie:hover {
+            background: #242424;
+        }
+
+
+        .movie-info {
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+        }
+
+
+        /* Poster */
+
+        .poster {
+            width: 70px;
+            height: 90px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e50914,
+                    #7b0000
+                );
+
+            border-radius: 8px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 30px;
+
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+
+        .movie-title {
+            font-size: 19px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+
+        .language {
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+
+        /* Delete Button */
+
+        .delete-btn {
+            background: transparent;
+
+            color: #ff4d4d;
+
+            border: 1px solid #ff4d4d;
+
+            padding: 9px 17px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .delete-btn:hover {
+            background: #ff4d4d;
+
+            color: white;
+        }
+
+
+        /* Empty */
+
+        .empty {
+            text-align: center;
+
+            padding: 70px 20px;
+
+            color: #888;
+        }
+
+
+        .empty-icon {
+            font-size: 55px;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 20px 12px;
+            }
+
+
+            .movie {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .movie-info {
+                width: 100%;
+            }
+
+
+            .delete-btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- Header -->
+
+    <div class="header">
+
+
+        <div class="movie-icon">
+            🎬
+        </div>
+
+
+        <div>
+
+            <h1>Watch Later</h1>
+
+            <p>
+                Movies you want to watch
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Dynamic Success Message -->
+
+    <div id="message"></div>
+
+
+    <!-- Movie List -->
+
+    <div class="movie-list"
+         id="movie-list">
+
+
+        {% for movie in movies %}
+
+
+        <div class="movie"
+             id="movie-{{ movie.id }}">
+
+
+            <div class="movie-info">
+
+
+                <div class="poster">
+                    🎬
+                </div>
+
+
+                <div>
+
+                    <div class="movie-title">
+
+                        {{ movie.title }}
+
+                    </div>
+
+
+                    <div class="language">
+
+                        🌐 {{ movie.language }}
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="delete-btn"
+                onclick="deleteMovie({{ movie.id }})">
+
+                Delete
+
+            </button>
+
+
+        </div>
+
+
+        {% empty %}
+
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                🎬
+            </div>
+
+            Your Watch Later list is empty.
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</div>
+
+<script>
+
+    function deleteMovie(movieId) {
+
+        fetch("/delete-movie/", {
+
+            method: "DELETE",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                movie_id: movieId
+            })
+
+        })
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            if (data.success) {
+
+                // 1. UIમાંથી movie card remove
+                const movieElement =
+                    document.getElementById(
+                        `movie-${movieId}`
+                    );
+
+                if (movieElement) {
+                    movieElement.remove();
+                }
+
+
+                // 2. Dynamic success message
+                const message =
+                    document.getElementById("message");
+
+                message.innerText =
+                    "✓ " + data.message;
+
+                message.style.display = "block";
+
+
+                // 3. Message 2 seconds પછી hide
+                setTimeout(() => {
+
+                    message.style.display = "none";
+
+                }, 2000);
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Delete Error:",
+                error
+            );
+
+        });
+
+    }
+
+</script>
+</body>
+
+</html>

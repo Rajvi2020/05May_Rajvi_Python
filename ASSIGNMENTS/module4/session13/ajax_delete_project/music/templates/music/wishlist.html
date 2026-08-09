@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Wishlist</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background: #f1f3f6;
+
+            min-height: 100vh;
+
+            padding: 30px 20px;
+        }
+
+
+        .container {
+            max-width: 1000px;
+
+            margin: auto;
+        }
+
+
+        /* Header */
+
+        .header {
+            background: #2874f0;
+
+            color: white;
+
+            padding: 25px 30px;
+
+            border-radius: 12px 12px 0 0;
+
+            box-shadow:
+                0 3px 10px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .header h1 {
+            font-size: 28px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .header p {
+            font-size: 14px;
+
+            opacity: 0.9;
+        }
+
+
+        /* Success message */
+
+        #message {
+            display: none;
+
+            background: #e8f5e9;
+
+            color: #2e7d32;
+
+            padding: 14px 18px;
+
+            border-left: 5px solid #2e7d32;
+
+            margin-top: 15px;
+
+            border-radius: 6px;
+
+            font-weight: bold;
+        }
+
+
+        /* Wishlist */
+
+        .wishlist {
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 0 0 12px 12px;
+        }
+
+
+        /* Product Card */
+
+        .product {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 20px;
+
+            border-bottom: 1px solid #eee;
+
+            transition: 0.3s;
+        }
+
+
+        .product:last-child {
+            border-bottom: none;
+        }
+
+
+        .product:hover {
+            background: #fafafa;
+        }
+
+
+        .product-info {
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+
+        /* Product image placeholder */
+
+        .product-image {
+            width: 90px;
+            height: 90px;
+
+            background: #f5f5f5;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 40px;
+        }
+
+
+        .product-name {
+            font-size: 18px;
+
+            font-weight: bold;
+
+            color: #212121;
+
+            margin-bottom: 8px;
+        }
+
+
+        .price {
+            font-size: 18px;
+
+            font-weight: bold;
+
+            color: #212121;
+        }
+
+
+        /* Remove button */
+
+        .remove-btn {
+            background: white;
+
+            border: 1px solid #2874f0;
+
+            color: #2874f0;
+
+            padding: 10px 18px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .remove-btn:hover {
+            background: #2874f0;
+
+            color: white;
+        }
+
+
+        /* Empty wishlist */
+
+        .empty {
+            text-align: center;
+
+            padding: 60px 20px;
+
+            color: #777;
+
+            font-size: 18px;
+        }
+
+
+        .empty-icon {
+            font-size: 55px;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+
+            .product {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .product-info {
+                width: 100%;
+            }
+
+
+            .remove-btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+
+<div class="container">
+
+
+    <!-- Header -->
+
+    <div class="header">
+
+        <h1>🛍️ My Wishlist</h1>
+
+        <p>
+            Save your favorite products for later
+        </p>
+
+    </div>
+
+
+    <!-- Success Message -->
+
+    <div id="message"></div>
+
+
+    <!-- Products -->
+
+    <div class="wishlist" id="wishlist">
+
+
+        {% for product in products %}
+
+
+        <div class="product"
+             id="product-{{ product.id }}">
+
+
+            <div class="product-info">
+
+
+                <div class="product-image">
+
+                    🛍️
+
+                </div>
+
+
+                <div>
+
+                    <div class="product-name">
+
+                        {{ product.name }}
+
+                    </div>
+
+
+                    <div class="price">
+
+                        ₹{{ product.price }}
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="remove-btn"
+                onclick="removeProduct({{ product.id }})">
+
+                Remove from Wishlist
+
+            </button>
+
+
+        </div>
+
+
+        {% empty %}
+
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                💔
+            </div>
+
+            Your wishlist is empty.
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</div>
+<script>
+
+    function removeProduct(productId) {
+
+        fetch(`/delete-product/${productId}/`, {
+
+            method: "DELETE"
+
+        })
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            if (data.success) {
+
+                // Product UIમાંથી remove કરો
+                const productElement =
+                    document.getElementById(
+                        `product-${productId}`
+                    );
+
+                if (productElement) {
+                    productElement.remove();
+                }
+
+
+                // Success message બતાવો
+                const message =
+                    document.getElementById("message");
+
+                message.innerText =
+                    "✓ " + data.message;
+
+                message.style.display = "block";
+
+
+                // 2 seconds પછી message hide
+                setTimeout(() => {
+
+                    message.style.display = "none";
+
+                }, 2000);
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Delete Error:",
+                error
+            );
+
+        });
+
+    }
+
+</script>
+
+</body>
+
+</html>

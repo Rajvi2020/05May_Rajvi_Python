@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Playlist</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #121212,
+                    #1e1e1e
+                );
+
+            color: white;
+
+            min-height: 100vh;
+
+            padding: 40px 20px;
+        }
+
+
+        .container {
+            max-width: 850px;
+
+            margin: auto;
+
+            background: #181818;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+
+        .header {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .music-icon {
+            width: 55px;
+            height: 55px;
+
+            background: #1db954;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 25px;
+        }
+
+
+        .header h1 {
+            font-size: 30px;
+        }
+
+
+        .header p {
+            color: #aaa;
+
+            margin-top: 5px;
+        }
+
+
+        .song {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background: #242424;
+
+            padding: 18px;
+
+            margin-bottom: 12px;
+
+            border-radius: 12px;
+
+            transition: 0.3s;
+        }
+
+
+        .song:hover {
+            background: #303030;
+
+            transform: translateY(-2px);
+        }
+
+
+        .song-info {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .song-number {
+            color: #aaa;
+
+            width: 25px;
+
+            text-align: center;
+        }
+
+
+        .song-icon {
+            width: 45px;
+            height: 45px;
+
+            background: #333;
+
+            border-radius: 8px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 20px;
+        }
+
+
+        .song-title {
+            font-size: 17px;
+
+            font-weight: bold;
+        }
+
+
+        .artist {
+            color: #aaa;
+
+            font-size: 14px;
+
+            margin-top: 4px;
+        }
+
+
+        .delete-btn {
+            border: none;
+
+            background: #e63946;
+
+            color: white;
+
+            padding: 9px 16px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .delete-btn:hover {
+            background: #ff4d5a;
+
+            transform: scale(1.05);
+        }
+
+
+        #message {
+            display: none;
+
+            background: #1db954;
+
+            color: white;
+
+            padding: 12px 15px;
+
+            border-radius: 8px;
+
+            margin-bottom: 20px;
+
+            text-align: center;
+        }
+
+
+        .empty {
+            text-align: center;
+
+            color: #888;
+
+            padding: 40px;
+
+            display: none;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 20px;
+            }
+
+            .song {
+                padding: 14px;
+            }
+
+            .delete-btn {
+                padding: 8px 10px;
+            }
+
+            .song-number {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- Header -->
+
+    <div class="header">
+
+        <div class="music-icon">
+            🎵
+        </div>
+
+        <div>
+
+            <h1>My Playlist</h1>
+
+            <p>Your favorite songs</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Success Message -->
+
+    <div id="message"></div>
+
+
+    <!-- Songs -->
+
+    <div id="playlist">
+
+
+        {% for song in songs %}
+
+
+        <div class="song"
+             id="song-{{ song.id }}">
+
+
+            <div class="song-info">
+
+
+                <div class="song-number">
+                    {{ forloop.counter }}
+                </div>
+
+
+                <div class="song-icon">
+                    🎵
+                </div>
+
+
+                <div>
+
+                    <div class="song-title">
+                        {{ song.title }}
+                    </div>
+
+                    <div class="artist">
+                        {{ song.artist }}
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="delete-btn"
+                onclick="deleteSong({{ song.id }})">
+
+                Delete
+
+            </button>
+
+
+        </div>
+
+
+        {% empty %}
+
+
+        <div class="empty"
+             style="display: block;">
+
+            🎵 Your playlist is empty.
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+function deleteSong(songId) {
+
+
+    fetch(`/delete-song/${songId}/`, {
+
+        method: "DELETE"
+
+    })
+
+
+    .then(response => response.json())
+
+
+    .then(data => {
+
+
+        if (data.success) {
+
+
+            // Remove song from UI
+
+            const songElement =
+                document.getElementById(
+                    `song-${songId}`
+                );
+
+
+            if (songElement) {
+
+                songElement.remove();
+
+            }
+
+
+            // Show success message
+
+            const message =
+                document.getElementById("message");
+
+
+            message.innerText =
+                "✓ " + data.message;
+
+
+            message.style.display = "block";
+
+
+            // Hide message after 2 seconds
+
+            setTimeout(() => {
+
+                message.style.display = "none";
+
+            }, 2000);
+
+
+        }
+
+    })
+
+
+    .catch(error => {
+
+        console.error(
+            "Delete Error:",
+            error
+        );
+
+    });
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
