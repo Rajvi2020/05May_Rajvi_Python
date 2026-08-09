@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profiles</title>
+</head>
+<body>
+
+    <h1>User Profiles</h1>
+
+    <a href="{% url 'create_profile' %}">
+        Create New Profile
+    </a>
+
+    <ul>
+        {% for profile in profiles %}
+            <li>
+                Username: {{ profile.username }}
+                | Age: {{ profile.age }}
+            </li>
+        {% empty %}
+            <li>No profiles available.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Profile</title>
+</head>
+<body>
+
+    <h1>Create User Profile</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Create Profile</button>
+    </form>
+
+    <br>
+
+    <a href="{% url 'profile_list' %}">
+        View All Profiles
+    </a>
+
+</body>
+</html>
