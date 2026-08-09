@@ -1,0 +1,29 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Order</title>
+</head>
+<body>
+
+    <h1>🍔 Food Order</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Dish Name:</label>
+        <input type="text" name="dish_name" required>
+
+        <br><br>
+
+        <label>Price:</label>
+        <input type="number" name="price" min="1" required>
+
+        <br><br>
+
+        <button type="submit">Pay Now</button>
+    </form>
+
+</body>
+</html>
+```

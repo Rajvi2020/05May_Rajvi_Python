@@ -1,0 +1,28 @@
+```html id="n184yk"
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting to Paytm</title>
+</head>
+<body>
+
+    <h2>Redirecting to Paytm...</h2>
+    <p>Please wait...</p>
+
+    <form method="POST"
+          action="https://securegw-stage.paytm.in/theia/api/v1/showPaymentPage"
+          name="paytmForm">
+
+        <input type="hidden" name="mid" value="{{ mid }}">
+        <input type="hidden" name="orderId" value="{{ order_id }}">
+        <input type="hidden" name="txnToken" value="{{ txn_token }}">
+
+    </form>
+
+    <script>
+        document.paytmForm.submit();
+    </script>
+
+</body>
+</html>
+```
