@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Flipkart Pickup Point Search</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        input {
+            flex: 1;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 14px 25px;
+            border: none;
+            border-radius: 5px;
+            background: #2874f0;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #1259c3;
+        }
+
+        .pickup-point {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px #ddd;
+        }
+
+        .distance {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+            background: #ffe5e5;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .no-result {
+            background: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <h1>
+        Flipkart Pickup Point Finder
+    </h1>
+
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="address"
+            placeholder="Enter your current address"
+            value="{{ address }}"
+            required
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+
+    {% if error %}
+
+        <div class="error">
+
+            {{ error }}
+
+        </div>
+
+    {% endif %}
+
+
+    {% if results %}
+
+        <h2>
+            Pickup Points Near You
+        </h2>
+
+
+        {% for point in results %}
+
+            <div class="pickup-point">
+
+                <h3>
+                    {{ forloop.counter }}.
+                    {{ point.name }}
+                </h3>
+
+                <p>
+                    <strong>Address:</strong>
+                    {{ point.address }}
+                </p>
+
+                <p class="distance">
+                    Distance:
+                    {{ point.distance }} km
+                </p>
+
+                <p>
+                    Latitude:
+                    {{ point.lat }}
+                </p>
+
+                <p>
+                    Longitude:
+                    {{ point.lng }}
+                </p>
+
+            </div>
+
+        {% endfor %}
+
+    {% elif address and not error %}
+
+        <div class="no-result">
+
+            No pickup points found.
+
+        </div>
+
+    {% endif %}
+
+
+</body>
+
+</html>

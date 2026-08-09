@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Nearby Cafes</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .cafe {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <h1>Cafes Within 3 KM</h1>
+
+
+    {% if cafes %}
+
+        {% for cafe in cafes %}
+
+            <div class="cafe">
+
+                <h3>
+                    {{ cafe.name }}
+                </h3>
+
+                <p>
+                    Distance:
+                    <strong>
+                        {{ cafe.distance }} km
+                    </strong>
+                </p>
+
+                <p>
+                    Latitude: {{ cafe.lat }}
+                </p>
+
+                <p>
+                    Longitude: {{ cafe.lng }}
+                </p>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>
+            No cafes found within 3 km.
+        </p>
+
+    {% endif %}
+
+</body>
+
+</html>
