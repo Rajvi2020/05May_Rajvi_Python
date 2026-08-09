@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Login | Django</title>
+
+```
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        width: 400px;
+        background: white;
+        border-radius: 20px;
+        padding: 45px 35px;
+        text-align: center;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+        width: 70px;
+        height: 70px;
+        background: #f1f3f4;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 25px;
+        font-size: 32px;
+    }
+
+    h1 {
+        color: #222;
+        margin-bottom: 12px;
+        font-size: 28px;
+    }
+
+    .subtitle {
+        color: #777;
+        margin-bottom: 30px;
+        font-size: 15px;
+    }
+
+    .google-btn {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid #ddd;
+        background: white;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .google-btn:hover {
+        background: #f7f7f7;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .google-icon {
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    .welcome {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .user-info {
+        background: #f7f7f7;
+        padding: 20px;
+        border-radius: 12px;
+        margin: 20px 0;
+        text-align: left;
+    }
+
+    .user-info p {
+        margin: 10px 0;
+        color: #555;
+    }
+
+    .user-info strong {
+        color: #222;
+    }
+
+    .logout-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background: #ef4444;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .logout-btn:hover {
+        background: #dc2626;
+    }
+
+    .footer {
+        margin-top: 25px;
+        color: #999;
+        font-size: 13px;
+    }
+</style>
+```
+
+</head>
+
+<body>
+{% if messages %}
+
+    {% for message in messages %}
+
+        <p>
+            {{ message }}
+        </p>
+
+    {% endfor %}
+
+{% endif %}
+<div class="container">
+
+```
+{% if user.is_authenticated %}
+
+    <div class="logo">👤</div>
+
+    <h1 class="welcome">
+        Welcome!
+    </h1>
+
+    <p class="subtitle">
+        You have successfully logged in with Google.
+    </p>
+
+    <div class="user-info">
+        <p>
+            <strong>Name:</strong>
+            {{ user.get_full_name }}
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            {{ user.email }}
+        </p>
+    </div>
+
+    <a href="{% url 'logout' %}" class="logout-btn">
+        Logout
+    </a>
+
+    <div class="footer">
+        Django Google Authentication
+    </div>
+
+{% else %}
+
+    <div class="logo">🔐</div>
+
+    <h1>
+        Welcome Back
+    </h1>
+
+    <p class="subtitle">
+        Sign in securely using your Google account.
+    </p>
+
+    <form method="post" action="{% url 'social:begin' 'google-oauth2' %}">
+        {% csrf_token %}
+
+        <button type="submit" class="google-btn">
+            <span class="google-icon">G</span>
+            Continue with Google
+        </button>
+    </form>
+
+    <div class="footer">
+        Powered by Django & Google OAuth
+    </div>
+
+{% endif %}
+```
+
+<a href="{% url 'register' %}">
+    Create Account
+</a>
+
+</div>
+
+</body>
+</html>
