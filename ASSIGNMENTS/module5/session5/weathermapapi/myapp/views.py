@@ -6,7 +6,7 @@ from rest_framework.response import Response
 @api_view(['GET'])
 def music_weather(request, city):
 
-    api_key = "74f95ac2d79d8843acb082765b24db02"
+    api_key = ""
 
     url = "https://api.openweathermap.org/data/2.5/weather"
 
@@ -86,7 +86,7 @@ def food_location(request):
 @api_view(['GET'])
 
 def country_info(request, country_name):
-    API_KEY = "rc_live_defcd6e776f3404db9f058a5be9d5518"
+    API_KEY = ""
 
     url = f"https://api.restcountries.com/countries/v5/names.common/{country_name}"
 
