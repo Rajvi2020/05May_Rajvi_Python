@@ -18,6 +18,9 @@ class studentinfo(models.Model):
   address=models.TextField()
   # def __str__(self):
   #   return self.last_name
+
+
+
   
 
 

@@ -16,8 +16,7 @@ from .models import Order, Product, Review, Playlist
 admin.site.register(Order)
 admin.site.register(Product)
 admin.site.register(Review)
-from django.contrib import admin
-from .models import Playlist
+
 
 
 
